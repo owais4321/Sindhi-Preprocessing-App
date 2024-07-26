@@ -1,2 +1,2 @@
-python-crfsuite
+python-crfsuite==0.9.10
 pandas
