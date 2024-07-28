@@ -100,11 +100,11 @@ encoder_model, decoder_model, input_tokenizer, target_tokenizer, config = load_m
 #   print(f"Word: {word}, Lemma: {lemma}")
 
 # Streamlit app
-st.title("Sindhi POS Tagging")
+st.title("Sindhi Language Preprocessing")
 
-sentence = st.text_input("Enter a sentence for tagging:", "")
+sentence = st.text_input("Enter a sentence for Preprocessing:", "")
 
-if st.button("Tag Sentence"):
+if st.button("Preprocess Sentence"):
     if sentence:
         prepared = prepare_sentence_for_tagging(sentence)
         tags = tagger.tag(convert_features(prepared))
@@ -119,7 +119,7 @@ if st.button("Tag Sentence"):
             'Lemma':lemmas
         })
 
-        st.write("Tagged Output:")
+        st.write("Preprocessed Output:")
         st.dataframe(df, use_container_width=True)
         
         # Optional: Add some CSS styling to make it look better
