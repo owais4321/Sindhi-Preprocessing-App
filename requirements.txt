@@ -342,6 +342,6 @@ Werkzeug==3.0.3
 
 zipp==3.17.0
 
-tensorflow
+keras==2.15.0
 
-keras
+tf_keras==2.15.1
