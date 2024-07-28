@@ -41,7 +41,7 @@ def prepare_sentence_for_tagging(sentence):
 
 
 def load_models_and_tokenizers():
-    encoder_model = load_model('./encoder_model.h5')
+    encoder_model = load_model('encoder_model.h5')
     decoder_model = load_model('decoder_model.h5')
 
     with open('input_tokenizer.pickle', 'rb') as handle:
