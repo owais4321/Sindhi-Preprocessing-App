@@ -159,7 +159,8 @@ if st.button("Preprocess Sentence"):
         # Display results
         st.subheader("Original Text")
         st.write(sentence)
-
+        st.subheader("Preprocessed Text")
+        st.write(processed_text)
         # Highlight stopwords in original text
         highlighted_text = sentence
         for word in stopwords:
