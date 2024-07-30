@@ -103,7 +103,8 @@ stopwords = load_stopwords()
 
 # Function to process the text
 def remove_stopwords(text):
-    words = re.findall(r'\S+', text)
+    # words = re.findall(r'\S+', text)
+    words = text.split(" ")
     processed_words = [word for word in words if word not in stopwords]
     return ' '.join(processed_words)
 
