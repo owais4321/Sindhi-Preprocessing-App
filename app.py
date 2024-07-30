@@ -153,31 +153,31 @@ if st.button("Preprocess Sentence"):
             </style>
         """, unsafe_allow_html=True)
     
-    processed_text = remove_stopwords(sentence)
+        processed_text = remove_stopwords(sentence)
 
-    # Display results
-    st.subheader("Original Text")
-    st.write(sentence)
+        # Display results
+        st.subheader("Original Text")
+        st.write(sentence)
 
-    # Highlight stopwords in original text
-    highlighted_text = sentence
-    for word in stopwords:
-        if word in sentence:
-            highlighted_text = highlighted_text.replace(word, f"<span style='background-color: yellow;'>{word}</span>")
-    
-    st.markdown(f"<p style='font-size: 16px;'>{highlighted_text}</p>", unsafe_allow_html=True)
+        # Highlight stopwords in original text
+        highlighted_text = sentence
+        for word in stopwords:
+            if word in sentence:
+                highlighted_text = highlighted_text.replace(word, f"<span style='background-color: yellow;'>{word}</span>")
+        
+        st.markdown(f"<p style='font-size: 16px;'>{highlighted_text}</p>", unsafe_allow_html=True)
 
-    st.subheader("Processed Text")
-    st.write(processed_text)
+        st.subheader("Processed Text")
+        st.write(processed_text)
 
-    # Show statistics
-    original_word_count = len(sentence.split())
-    processed_word_count = len(processed_text.split())
-    removed_words = original_word_count - processed_word_count
+        # Show statistics
+        original_word_count = len(sentence.split())
+        processed_word_count = len(processed_text.split())
+        removed_words = original_word_count - processed_word_count
 
-    col1, col2, col3 = st.columns(3)
-    col1.metric("Original Word Count", original_word_count)
-    col2.metric("Processed Word Count", processed_word_count)
-    col3.metric("Removed Stopwords", removed_words)
+        col1, col2, col3 = st.columns(3)
+        col1.metric("Original Word Count", original_word_count)
+        col2.metric("Processed Word Count", processed_word_count)
+        col3.metric("Removed Stopwords", removed_words)
     else:
         st.write("Please enter a sentence.")
