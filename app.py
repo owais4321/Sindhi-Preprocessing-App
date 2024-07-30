@@ -94,6 +94,19 @@ def lemmatize(input_text, encoder_model, decoder_model, input_tokenizer, target_
 
     return decoded_sentence
 
+@st.cache_data
+def load_stopwords():
+    return set(pd.read_csv('sindhi_stopwords.csv')['stopword'].tolist())
+
+stopwords = load_stopwords()
+
+# Function to process the text
+def remove_stopwords(text):
+    words = re.findall(r'\S+', text)
+    processed_words = [word for word in words if word not in stopwords]
+    return ' '.join(processed_words)
+
+
 encoder_model, decoder_model, input_tokenizer, target_tokenizer, config = load_models_and_tokenizers()
 # Test the lemmatizer
 # lemma = lemmatize(word, encoder_model, decoder_model, input_tokenizer, target_tokenizer, config)
@@ -138,5 +151,36 @@ if st.button("Preprocess Sentence"):
                 }
             </style>
         """, unsafe_allow_html=True)
+    
+    processed_text = remove_stopwords(sentence)
+
+    # Display results
+    st.subheader("Original Text")
+    st.write(sentence)
+
+    # Highlight stopwords in original text
+    highlighted_text = sentence
+    for word in stopwords:
+        if word in sentence:
+            highlighted_text = highlighted_text.replace(word, f"<span style='background-color: yellow;'>{word}</span>")
+    
+    st.markdown(f"<p style='font-size: 16px;'>{highlighted_text}</p>", unsafe_allow_html=True)
+
+    st.subheader("Processed Text")
+    st.write(processed_text)
+
+    # Show statistics
+    original_word_count = len(sentence.split())
+    processed_word_count = len(processed_text.split())
+    removed_words = original_word_count - processed_word_count
+
+    col1, col2, col3 = st.columns(3)
+    col1.metric("Original Word Count", original_word_count)
+    col2.metric("Processed Word Count", processed_word_count)
+    col3.metric("Removed Stopwords", removed_words)
+
+
+
+    
     else:
         st.write("Please enter a sentence.")
