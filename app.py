@@ -95,7 +95,6 @@ def lemmatize(input_text, encoder_model, decoder_model, input_tokenizer, target_
 
     return decoded_sentence
 
-@st.cache_data
 def load_stopwords():
     return set(pd.read_csv('Stopwords.csv')['Stopwords'].tolist())
 
