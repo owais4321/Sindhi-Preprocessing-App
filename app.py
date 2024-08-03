@@ -176,9 +176,9 @@ if st.button("Preprocess Sentence"):
         
         # st.markdown(f"<p style='font-size: 24px;'>{highlighted_text}</p>", unsafe_allow_html=True)
 
-        st.subheader("Processed Text")
+        st.subheader("Processed Text - After Stopword Removal")
         st.write(processed_text)
-        st.subheader("Highlighted Text")
+        st.subheader("Stopwords Highlighted Text")
         st.write(highlighted_text,unsafe_allow_html=True)
 
         # Show statistics
