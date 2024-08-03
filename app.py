@@ -158,21 +158,28 @@ if st.button("Preprocess Sentence"):
         # Display results
         st.subheader("Original Text")
         st.write(sentence)
-        st.subheader("Preprocessed Text")
-        st.write(processed_text)
+        # st.subheader("Preprocessed Text")
+        # st.write(processed_text)
         # Highlight stopwords in original text
-        highlighted_text = sentence
-        for word in stopwords:
-            if word in sentence:
-                f"<span style='color:#F5EDED;background-color: #6482AD;font-size: 24px'>{word}</span>"
-            else:
-                f"<span style='color:#F5EDED;font-size: 24px'>{word}</span>"
+        def highlight_stopwords(text):
+            words = text.split()
+            highlighted_text = ' '.join([f"**{word}**" if word in stopwords else word for word in words])
+            return highlighted_text
+        
+        highlighted_text = highlight_stopwords(sentence)
+        # for word in stopwords:
+        #     if word in sentence:
+        #         f"<span style='color:#F5EDED;background-color: #6482AD;font-size: 24px'>{word}</span>"
+        #     else:
+        #         f"<span style='color:#F5EDED;font-size: 24px'>{word}</span>"
         #         highlighted_text = highlighted_text.replace(word, f"<span style='color:#F5EDED;background-color: 6482AD;font-size: 24px'>{word}</span>")
         
         # st.markdown(f"<p style='font-size: 24px;'>{highlighted_text}</p>", unsafe_allow_html=True)
 
         st.subheader("Processed Text")
         st.write(processed_text)
+        st.subheader("Highlighted Text")
+        st.write(highlighted_text)
 
         # Show statistics
         original_word_count = len(sentence.split())
