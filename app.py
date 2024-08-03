@@ -164,9 +164,12 @@ if st.button("Preprocess Sentence"):
         highlighted_text = sentence
         for word in stopwords:
             if word in sentence:
-                highlighted_text = highlighted_text.replace(word+" ", f"<span style='color:black;background-color: white;font-size: 24px'>{word}</span>")
+                f"<span style='color:#F5EDED;background-color: #6482AD;font-size: 24px'>{word}</span>"
+            else:
+                f"<span style='color:#F5EDED;font-size: 24px'>{word}</span>"
+        #         highlighted_text = highlighted_text.replace(word, f"<span style='color:#F5EDED;background-color: 6482AD;font-size: 24px'>{word}</span>")
         
-        st.markdown(f"<p style='font-size: 24px;'>{highlighted_text}</p>", unsafe_allow_html=True)
+        # st.markdown(f"<p style='font-size: 24px;'>{highlighted_text}</p>", unsafe_allow_html=True)
 
         st.subheader("Processed Text")
         st.write(processed_text)
