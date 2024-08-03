@@ -163,7 +163,7 @@ if st.button("Preprocess Sentence"):
         # Highlight stopwords in original text
         def highlight_stopwords(text):
             words = text.split()
-            highlighted_text = ' '.join([f"**{word}**" if word in stopwords else word for word in words])
+            highlighted_text = ' '.join([f"<span style='color:#F5EDED;background-color: #6482AD;font-size: 24px'>{word}</span>" if word in stopwords else word for word in words])
             return highlighted_text
         
         highlighted_text = highlight_stopwords(sentence)
