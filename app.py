@@ -179,7 +179,7 @@ if st.button("Preprocess Sentence"):
         st.subheader("Processed Text")
         st.write(processed_text)
         st.subheader("Highlighted Text")
-        st.write(highlighted_text)
+        st.write(highlighted_text,unsafe_allow_html=True)
 
         # Show statistics
         original_word_count = len(sentence.split())
